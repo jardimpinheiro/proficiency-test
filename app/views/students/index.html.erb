@@ -1,0 +1,34 @@
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
+
+<h1>Listagem de Estudantes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Número de registro</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.register_number %></td>
+        <td><%= student.status %></td>
+        <td><%= link_to 'Visualizar', student %></td>
+        <td><%= link_to 'Editar', edit_student_path(student) %></td>
+        <td><%= link_to 'Remover', student, method: :delete, data: { confirm: 'Você tem certeza que deseja remover?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Criar Estudante', new_student_path %>
+<%= link_to 'Voltar', root_path %>

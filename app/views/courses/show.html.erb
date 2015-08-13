@@ -1,0 +1,21 @@
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @course.status %>
+</p>
+
+<%= link_to 'Editar', edit_course_path(@course) %> |
+<%= link_to 'Voltar', courses_path %>

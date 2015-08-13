@@ -1,0 +1,28 @@
+<%= form_for(@classroom) do |f| %>
+  <% if @classroom.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@classroom.errors.count, "problema") %>:</h2>
+
+      <ul>
+      <% @classroom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-3">
+
+  <div class="form-group">
+    <%= f.label :student %><br>
+    <%= f.collection_select(:student_id, Student.all, :id, :name, include_blank: 'Selecione...') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :course %><br>
+    <%= f.collection_select(:course_id, Course.all, :id, :name, include_blank: 'Selecione...') %>
+  </div>
+  </div></div>
+  <div>
+    <%= f.submit "Salvar", class: "btn btn-default" %>
+  </div>
+<% end %>

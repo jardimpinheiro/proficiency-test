@@ -1,0 +1,32 @@
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
+
+<h1>Matrículas</h1>
+
+<table  class="table">
+  <thead>
+    <tr>
+      <th>Estudante</th>
+      <th>Curso</th>
+      <th>Data e Hora Matrícula</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classrooms.each do |classroom| %>
+      <tr>
+        <td><%= classroom.student.name %></td>
+        <td><%= classroom.course.name %></td>
+        <td><%= classroom.entry_at.strftime('%d/%m/%Y %H:%M') %></td>
+        <td><%= link_to 'Desmatricular', classroom, method: :delete, data: { confirm: 'Você tem certeza que deseja efetuar a desmatrícula?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Matricular Aluno', new_classroom_path %>
+<%= link_to 'Voltar', root_path %>

@@ -1,0 +1,31 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@course.errors.count, "problema") %>:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-3">
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status %><br>
+    <%= f.number_field :status, class: 'form-control' %>
+  </div>
+  </div></div>
+  <div class="actions">
+    <%= f.submit "Salvar", class: "btn btn-default" %>
+  </div>
+<% end %>
